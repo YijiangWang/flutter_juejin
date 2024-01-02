@@ -13,6 +13,15 @@ class PageIndex extends StatefulWidget {
 
 class _PageIndexState extends State<PageIndex> {
 
+  List<String> tabTitles = ['今日最佳', '前端', '后端', 'iOS', 'Android', '大数据', '颈椎病预防指南', '程序人生'];
+  List<Widget> getAllTabs() {
+    List<Widget> list = [];
+    for(int i=0; i<tabTitles.length; i++) {
+      list.add(Tab(text: tabTitles[i]));
+    }
+    return list;
+  }
+
   getList() {
     List<Widget> dataList = [];
     for (int i = 0; i < 100; i++) {
@@ -110,35 +119,42 @@ class _PageIndexState extends State<PageIndex> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('首页'),
-        leading: const Icon(Icons.home),
-      ),
-      drawer: Container(
-        width: 300,
-        color: Colors.yellow,
-        child: const Center(
-          child: Text('drawer'),
+    return DefaultTabController(
+      length: tabTitles.length,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('首页'),
+          leading: const Icon(Icons.home),
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: getAllTabs()
+          ),
         ),
-      ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-         
-        child: ListView.separated(
-          itemBuilder: (BuildContext context, int idx){
-            return getSingleCell2(idx);
-          }, 
-          separatorBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 1,
-              color: Colors.grey,
-            );
-          },
-          itemCount: listData.length,
-        ), 
-      ),
+        drawer: Container(
+          width: 300,
+          color: Colors.yellow,
+          child: const Center(
+            child: Text('drawer'),
+          ),
+        ),
+        body: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          
+          child: ListView.separated(
+            itemBuilder: (BuildContext context, int idx){
+              return getSingleCell2(idx);
+            }, 
+            separatorBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 1,
+                color: Colors.grey,
+              );
+            },
+            itemCount: listData.length,
+          ), 
+        ),
+      )
     );
   }
 }
