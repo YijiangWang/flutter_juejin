@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/pages/pageindex.dart';
+import 'package:flutter_learn/pages/pageIndex.dart';
+import 'package:flutter_learn/pages/pageMy.dart';
+import 'package:flutter_learn/pages/pageSearch.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,11 +36,28 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIdx = 0;
+  late List<Widget> pages;
+
+  @override
+  void initState() {
+    pages = [
+      new PageIndex(),
+      new PageSearch(),
+      new PageMy(),
+    ];
+    super.initState();
+  }
+
+  getBodyPage() {
+    return PageView(
+      children: pages,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const PageIndex(),
+      body: getBodyPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIdx,
         onTap: (int idx) {
@@ -48,14 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '首页',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: '设置',
-          )
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: '发现'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: '设置')
         ], 
       ),
     );
