@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     pages = [
       new PageIndex(),
-      new PageSearch(),
+      // new PageSearch(),
       new PageMy(),
     ];
     super.initState();
