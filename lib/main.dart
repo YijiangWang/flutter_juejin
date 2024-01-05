@@ -37,12 +37,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIdx = 0;
+
+  PageController _pageController = PageController(initialPage: 0);
+
   late List<Widget> pages = [
-      new PageIndex(),
-      new PageSearch(),
-      new PageContact(),
-      new PageMy(),
-    ];
+    new PageIndex(),
+    new PageSearch(),
+    new PageContact(),
+    new PageMy(),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -55,7 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBodyPage(),
+      /// 方法一：IndexedStack：一旦构建过，下次再显示时不再构建，但是刚开始会构建完所有页面
+      /// 方法二：使用PageView和每个页面的 AutomaticKeepAliveClientMixin
+      body: PageView(
+        children: pages,
+        controller: _pageController,
+        physics: NeverScrollableScrollPhysics(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIdx,
         type: BottomNavigationBarType.fixed,
@@ -63,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           setState((){
             currentIdx = idx;
             // 这里可以写跳转逻辑
+            _pageController.jumpToPage(currentIdx);
           });
         },
         items: const [

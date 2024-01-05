@@ -7,7 +7,11 @@ class PageSearch extends StatefulWidget {
   State<PageSearch> createState() => _PageSearchState();
 }
 
-class _PageSearchState extends State<PageSearch> {
+class _PageSearchState extends State<PageSearch> with AutomaticKeepAliveClientMixin {
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
     print('渲染搜索');

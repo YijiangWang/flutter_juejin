@@ -11,7 +11,11 @@ class PageIndex extends StatefulWidget {
   State<PageIndex> createState() => _PageIndexState();
 }
 
-class _PageIndexState extends State<PageIndex> with TickerProviderStateMixin {
+class _PageIndexState extends State<PageIndex> with AutomaticKeepAliveClientMixin {
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   List<String> tabTitles = ['今日最佳', '前端', '后端', 'iOS', 'Android', '大数据', '颈椎病预防指南', '程序人生'];
 

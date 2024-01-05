@@ -9,7 +9,12 @@ class PageContact extends StatefulWidget {
   State<PageContact> createState() => _PageContactState();
 }
 
-class _PageContactState extends State<PageContact> {
+class _PageContactState extends State<PageContact> with AutomaticKeepAliveClientMixin {
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
   List listData = [];
 
   /// 获取数据
