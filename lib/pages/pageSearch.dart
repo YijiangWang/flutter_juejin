@@ -10,6 +10,7 @@ class PageSearch extends StatefulWidget {
 class _PageSearchState extends State<PageSearch> {
   @override
   Widget build(BuildContext context) {
+    print('渲染搜索');
     return Scaffold(
       appBar: AppBar(title: Text('发现')),
       body: Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/pages/pageContact.dart';
 import 'package:flutter_learn/pages/pageIndex.dart';
 import 'package:flutter_learn/pages/pageMy.dart';
 import 'package:flutter_learn/pages/pageSearch.dart';
@@ -36,22 +37,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIdx = 0;
-  late List<Widget> pages;
-
-  @override
-  void initState() {
-    pages = [
+  late List<Widget> pages = [
       new PageIndex(),
-      // new PageSearch(),
+      new PageSearch(),
+      new PageContact(),
       new PageMy(),
     ];
+  @override
+  void initState() {
     super.initState();
   }
 
   getBodyPage() {
-    return PageView(
-      children: pages,
-    );
+    return pages[currentIdx];
   }
 
   @override
@@ -60,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: getBodyPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIdx,
+        type: BottomNavigationBarType.fixed,
         onTap: (int idx) {
           setState((){
             currentIdx = idx;
@@ -69,7 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: '发现'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: '设置')
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: '联系人'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: '我的')
         ], 
       ),
     );

@@ -29,7 +29,7 @@ class _PageContactState extends State<PageContact> {
     var item = listData[index];
     return ListTile(
       leading: ClipOval(
-        child: Image.network(item['picture']['large']),
+        child: Image.network(item['picture']['large'], width: 50, height: 50,),
       ),
       title: Text(item['name']['first'] + ' ' + item['name']['last']),
       subtitle: Text(item['phone']),
@@ -49,6 +49,7 @@ class _PageContactState extends State<PageContact> {
 
   @override
   Widget build(BuildContext context) {
+    print('渲染联系人');
     return Scaffold(
       appBar: AppBar(
         title: Text('联系人'),
@@ -58,7 +59,7 @@ class _PageContactState extends State<PageContact> {
           return getList(index);
         },
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(
+          return const Divider(
             height: 1,
             color: Colors.grey,
           );

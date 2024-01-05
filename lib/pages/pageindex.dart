@@ -124,12 +124,13 @@ class _PageIndexState extends State<PageIndex> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    requestData2();
+    // requestData2();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print('渲染首页');
     return DefaultTabController(
       length: tabTitles.length,
       child: Scaffold(
