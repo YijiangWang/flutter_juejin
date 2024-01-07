@@ -3,6 +3,7 @@ import 'package:flutter_learn/pages/pageContact.dart';
 import 'package:flutter_learn/pages/pageIndex.dart';
 import 'package:flutter_learn/pages/pageMy.dart';
 import 'package:flutter_learn/pages/pageSearch.dart';
+// import 'package:flutter_learn/pages/pageDetail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,11 +18,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // 如果是客户端，可是像如下方式使用
+      home: const MyHomePage(title: 'Home Page'),
+
+      // 如果是网页端，像如下方式使用路由
+      // routes: {
+      //   '/': (_) => MyHomePage(title: ''),
+      //   '/detail': (_) => PageDetail(person: '',),
+      // },
+      // 后续的跳转也可以修改为： 
+      // Navigator.pushNamed(context, '/detail');
     );
   }
 }
@@ -76,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _pageController.jumpToPage(currentIdx);
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: '发现'),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: '联系人'),

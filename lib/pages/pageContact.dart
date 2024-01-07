@@ -40,7 +40,10 @@ class _PageContactState extends State<PageContact> with AutomaticKeepAliveClient
       subtitle: Text(item['phone']),
       trailing: Icon(Icons.navigate_next),
       onTap: () {
+        /// 跳转到某个页面
         Navigator.push(context, MaterialPageRoute(builder: (context) => PageDetail(person: item)));
+        /// 返回上一个页面
+        // Navigator.pop(context, );
       },
     );
   }
