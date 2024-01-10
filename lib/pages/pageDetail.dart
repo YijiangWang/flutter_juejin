@@ -18,6 +18,9 @@ class _PageDetailState extends State<PageDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(person['name']['first'] + ' ' + person['name']['last']), 
+      ),
+      body: Container(
+        
       )
     );
   }
