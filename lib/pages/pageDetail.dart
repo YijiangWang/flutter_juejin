@@ -20,6 +20,8 @@ class _PageDetailState extends State<PageDetail> {
         title: Text(person['name']['first'] + ' ' + person['name']['last']), 
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         
       )
     );
