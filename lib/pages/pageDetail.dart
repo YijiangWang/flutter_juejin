@@ -22,7 +22,7 @@ class _PageDetailState extends State<PageDetail> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        
+        child: Text('内容'),
       )
     );
   }
